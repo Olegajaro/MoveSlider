@@ -10,7 +10,7 @@ import SwiftUI
 struct SliderView: UIViewRepresentable {
     
     @Binding var sliderValue: Float
-    @Binding var alphaComponent: CGFloat
+    var alphaComponent: CGFloat
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
@@ -32,18 +32,16 @@ struct SliderView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(sliderValue: $sliderValue, alpha: $alphaComponent)
+        Coordinator(sliderValue: $sliderValue)
     }
 }
 
 extension SliderView {
     class Coordinator: NSObject {
         @Binding var sliderValue: Float
-        @Binding var alpha: CGFloat
         
-        init(sliderValue: Binding<Float>, alpha: Binding<CGFloat>) {
+        init(sliderValue: Binding<Float>) {
             self._sliderValue = sliderValue
-            self._alpha = alpha
         }
         
         @objc func setSliderValue(_ sender: UISlider) {
@@ -56,7 +54,7 @@ struct SliderView_Previews: PreviewProvider {
     static var previews: some View {
         SliderView(
             sliderValue: .constant(50),
-            alphaComponent: .constant(0.5)
+            alphaComponent: 0.5
         )
     }
 }

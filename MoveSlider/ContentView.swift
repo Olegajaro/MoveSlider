@@ -11,7 +11,6 @@ struct ContentView: View {
     
     @State private var targetValue = Int.random(in: 1...100)
     @State private var currentValue = Float.random(in: 1...100)
-    @State private var alpha: CGFloat = 0.5
     
     @State private var alertIsPresented = false
     
@@ -22,10 +21,9 @@ struct ContentView: View {
             HStack {
                 Text("0")
                 
-                SliderView(sliderValue: $currentValue, alphaComponent: $alpha)
+                SliderView(sliderValue: $currentValue, alphaComponent: getAlpha())
                     .onChange(of: currentValue) { newValue in
                         currentValue = newValue
-                        alpha = getAlpha()
                     }
                     .alert(
                         "Your score",
