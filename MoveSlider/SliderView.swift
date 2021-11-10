@@ -10,7 +10,7 @@ import SwiftUI
 struct SliderView: UIViewRepresentable {
     
     @Binding var sliderValue: Float
-    var alphaComponent: CGFloat
+    let alphaComponent: CGFloat
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()

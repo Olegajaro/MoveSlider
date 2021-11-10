@@ -21,7 +21,10 @@ struct ContentView: View {
             HStack {
                 Text("0")
                 
-                SliderView(sliderValue: $currentValue, alphaComponent: getAlpha())
+                SliderView(
+                    sliderValue: $currentValue,
+                    alphaComponent: getAlpha()
+                )
                     .onChange(of: currentValue) { newValue in
                         currentValue = newValue
                     }
